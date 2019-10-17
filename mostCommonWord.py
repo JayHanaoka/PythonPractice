@@ -8,8 +8,15 @@ Words in the paragraph are not case sensitive.  The answer is in lowercase.
 
 """
 
-inputString = input().split(' ')
-banned = input().split(' ')
+
+
+def removePunct(s):
+    r = ""
+    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    for c in s:
+        if c not in punctuations:
+            r += c
+    return r
 
 def commonWords(inputString, banned):
     words = {}
@@ -30,5 +37,11 @@ def getMax(words):
             result[0] = w
             result[1] = words[w]
     print(result)
+    
+inStr = removePunct(input()).lower()
+inputString = inStr.split()
+
+b = removePunct(input()).lower()
+banned = b.split(' ')
     
 commonWords(inputString, banned)
